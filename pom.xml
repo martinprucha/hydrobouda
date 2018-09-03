@@ -4,13 +4,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>cz.martinprucha</groupId>
+	<groupId>cz.mpr</groupId>
 	<artifactId>hydrobouda</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>hydrobouda</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Hydrobouda experimental project</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -26,6 +26,7 @@
 	</properties>
 
 	<dependencies>
+		<!-- Spring Boot starters -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -37,17 +38,35 @@
 		</dependency>
 
 		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-rest</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 
+		<!-- Spring Boot devtools -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
 		</dependency>
 		
+		<!-- HAL browser for REST Data -->
+		<dependency>
+    		<groupId>org.springframework.data</groupId>
+   	 		<artifactId>spring-data-rest-hal-browser</artifactId>
+		</dependency>
+		
+		<!-- H2 database -->
 		<dependency>
 		    <groupId>com.h2database</groupId>
 		    <artifactId>h2</artifactId>
