@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Hydrobouda - application menu</title>
+</head>
+
+<body>
+	<!-- This fragment contains application menu with important links -->
+	<div th:fragment="menu">
+		<hr/>
+		<a th:href="@{/home}">Home</a>
+		<a th:href="@{/page1}">Menu item 1</a>
+		<a th:href="@{/page2}">Menu item 2</a>
+		<a th:href="@{/page3}">Menu item 3</a>
+		<hr/>
+	</div>
+</body>
+
+</html>

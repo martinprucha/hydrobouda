@@ -3,13 +3,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>Hydrobouda</title>
+	<title>Hydrobouda - a place to be!</title>
+	<link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
 
 	<h1>Hydrobouda - a place to be!</h1>
+	
+	<!-- insert fragment with application menu -->
+	<div th:insert="~{menu::menu}">
+	</div>
+	
+	<!-- contents of the body -->
 	<p th:text="#{welcome}">Welcome!</p>
+	
 </body>
 
 </html>
