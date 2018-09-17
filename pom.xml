@@ -77,13 +77,6 @@
 		    <artifactId>h2</artifactId>
 		</dependency>
 		
-		<!-- WebJars -->
-		<dependency>
-  			<groupId>org.webjars.npm</groupId>
-  			<artifactId>w3-css</artifactId>
-  			<version>4.1.0</version>
-		</dependency>
-		
 	</dependencies>
 
 	<build>
