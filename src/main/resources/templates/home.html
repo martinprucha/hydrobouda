@@ -2,21 +2,44 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<title>Hydrobouda - a place to be!</title>
+<!-- template head -->
+<head th:replace="fragment_head::head">
 </head>
 
+<!-- template body -->
 <body>
+	<!--  navigation bar -->
+	<div th:replace="fragment_navigation::navigation"></div>
 
-	<h1>Hydrobouda - a place to be!</h1>
-	
-	<!-- insert fragment with application menu -->
-	<div th:insert="~{menu::menu}">
+	<!-- header -->
+	<div class="w3-container w3-blue-gray">
+		<h1>Welcome!</h1>
 	</div>
-	
-	<!-- contents of the body -->
-	<p th:text="#{welcome}">Welcome!</p>
-	
-</body>
 
+	<!-- content -->
+	<div class="w3-container">
+		<h2>Page Content</h2>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+			Maecenas et elit id augue hendrerit tristique. Class aptent taciti
+			sociosqu ad litora torquent per conubia nostra, per inceptos
+			himenaeos. Pellentesque auctor ante augue. Phasellus scelerisque,
+			eros sit amet rutrum maximus, lorem sem tempor est, eu mollis lorem
+			nunc nec libero. Quisque convallis quam tellus, ac finibus magna
+			varius eget. Mauris semper diam eu mattis blandit. Ut auctor mollis
+			dignissim. Maecenas dapibus sit amet metus sit amet fringilla.
+			Praesent ullamcorper lobortis sodales. Nullam eget nulla non erat
+			consequat pharetra. Mauris ultrices, purus ac placerat hendrerit,
+			neque ligula mattis velit, vel sagittis ante dui eu eros. Donec
+			tristique lectus eu nunc maximus, quis gravida libero lobortis. Sed
+			blandit placerat erat, eu tempor sapien consectetur sit amet. Nulla
+			mollis suscipit dui. Pellentesque vel ante sit amet quam imperdiet
+			tempus. Praesent at fermentum mi.
+		</p>
+	</div>
+
+	<!-- footer -->
+	<div th:replace="fragment_footer::footer"></div>
+	
+	</body>
 </html>

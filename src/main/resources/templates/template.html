@@ -2,35 +2,25 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-<title>Hydrobouda - a place to be!</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- W3.css -->
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+<!-- template head -->
+<head th:replace="fragment_head::head">
 </head>
 
+<!-- template body -->
 <body>
 	<!--  navigation bar -->
-	<div class="w3-container w3-bar w3-black">
-		<a href="/home" class="w3-bar-item w3-button"><i class="fa fa-home"></i> Home</a> 
-		<a href="#" class="w3-bar-item w3-button">Link 1</a> 
-		<a href="#" class="w3-bar-item w3-button">Link 2</a> 
-		<a href="#" class="w3-bar-item w3-button">Link 3</a>
-	</div>
+	<div th:replace="fragment_navigation::navigation"></div>
 
-	<!-- page header -->
+	<!-- header -->
 	<div class="w3-container w3-blue-gray">
-		<h1>Header</h1>
+		<h1>Page Header</h1>
 	</div>
 
-	<!-- page content -->
+	<!-- content -->
 	<div class="w3-container">
-		<h2>Content headline</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+		<h2>Page Content</h2>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 			Maecenas et elit id augue hendrerit tristique. Class aptent taciti
 			sociosqu ad litora torquent per conubia nostra, per inceptos
 			himenaeos. Pellentesque auctor ante augue. Phasellus scelerisque,
@@ -48,9 +38,8 @@
 		</p>
 	</div>
 
-	<!--  page footer -->
-	<div id="footer" class="w3-container w3-blue-gray">
-		<h5>Footer</h5>
-		<p>Footer information goes here</p>
-	</div>
-</body>
+	<!-- footer -->
+	<div th:replace="fragment_footer::footer"></div>
+	
+	</body>
+</html>
