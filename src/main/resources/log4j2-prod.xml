@@ -4,8 +4,8 @@
 <Configuration status="WARN" strict="true" name="hydrobouda">
 	<!-- properties -->
 	<Properties>
-		<Property name="filename">target/logs/hydrobouda.log</Property>
-		<Property name="filePattern">target/logs/hydrobouda.%d{dd-MM-yyyy_HH}.log.gz</Property>
+		<Property name="filename">target/logs/hydrobouda_prod.log</Property>
+		<Property name="filePattern">target/logs/hydrobouda_prod.%d{dd-MM-yyyy_HH}.log.gz</Property>
 		<Property name="pattern">%d{dd-MM-yyyy HH:mm:ss,SSS} [%p] %C{1.} [%t] %m%n</Property>
 	</Properties>
 
