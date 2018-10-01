@@ -21,7 +21,7 @@ public class Message {
 	private Long id;
 	private LocalDateTime creationDateTime;
 	private String author;
-	private String message;
+	private String text;
 
 	public Long getId() {
 		return id;
@@ -47,12 +47,12 @@ public class Message {
 		this.author = author;
 	}
 
-	public String getMessage() {
-		return message;
+	public String getText() {
+		return text;
 	}
 
-	public void setMessage(String message) {
-		this.message = message;
+	public void setText(String text) {
+		this.text = text;
 	}
 
 	@Override
@@ -62,7 +62,7 @@ public class Message {
 		result = prime * result + ((author == null) ? 0 : author.hashCode());
 		result = prime * result + ((creationDateTime == null) ? 0 : creationDateTime.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((message == null) ? 0 : message.hashCode());
+		result = prime * result + ((text == null) ? 0 : text.hashCode());
 		return result;
 	}
 
@@ -90,10 +90,10 @@ public class Message {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (message == null) {
-			if (other.message != null)
+		if (text == null) {
+			if (other.text != null)
 				return false;
-		} else if (!message.equals(other.message))
+		} else if (!text.equals(other.text))
 			return false;
 		return true;
 	}
@@ -101,6 +101,6 @@ public class Message {
 	@Override
 	public String toString() {
 		return "Message [id=" + id + ", creationDateTime=" + creationDateTime + ", author=" + author + ", message="
-				+ message + "]";
+				+ text + "]";
 	}
 }

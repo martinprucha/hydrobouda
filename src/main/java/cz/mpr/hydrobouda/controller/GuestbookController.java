@@ -1,13 +1,52 @@
 package cz.mpr.hydrobouda.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import java.time.LocalDateTime;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import cz.mpr.hydrobouda.model.Message;
+import cz.mpr.hydrobouda.service.MessageService;
+
+/**
+ * Controller for guestbook.
+ * 
+ * @author MPR
+ * @version 1.0
+ * @since 1.10.2018
+ *
+ */
 @Controller
 public class GuestbookController {
+	@Autowired
+	MessageService messageService;
 	
 	@GetMapping("/guestbook")
-	public String guestbook() {
+	public String guestbook(Model model) {
+		// read existing messages
+		List<Message> messages = messageService.getAllMessages();
+		model.addAttribute("messages", messages);
+		
+		// add a new message backing object for the form
+		model.addAttribute("message", new Message());
+		
+		return "guestbook";
+	}
+
+	@PostMapping("/guestbook")
+	public String saveGuestbookMessage(Message message, Model model) {
+		// save new message
+		message.setCreationDateTime(LocalDateTime.now());
+		messageService.saveMessage(message);
+		
+		// read existing messages
+		List<Message> messages = messageService.getAllMessages();
+		model.addAttribute("messages", messages);
+		
 		return "guestbook";
 	}
 }

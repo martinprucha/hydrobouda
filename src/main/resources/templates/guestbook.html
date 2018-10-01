@@ -26,14 +26,14 @@
 					<h3>Your new message:</h3>
 				</div>
 				<div class="w3-container">
-					<form>
+					<form th:action="@{/guestbook}" th:object="${message}" th:method="post">
 						<p>
 							<label>Author:</label>
-							<input class="w3-input w3-border" type="text">
+							<input class="w3-input w3-border" type="text" th:field="*{author}">
 						</p>
 						<p>
 							<label>Message:</label>
-							<textarea class="w3-input w3-border" name="message" cols="50" rows="3"></textarea>
+							<textarea class="w3-input w3-border" cols="50" rows="3" th:field="*{text}"></textarea>
 						</p>
 						<p>
 							<input type="submit" value="Post message!"/>
@@ -48,11 +48,16 @@
 			<div class="w3-container w3-blue-gray">
 				<h3>Existing messages in guestbook:</h3>
 			</div>
-			<div class="w3-container">
-				TODO - retrieve and display existing messages
-			</div>
-		</div>
-		
+			<div class="w3-container" th:each="message : ${messages}">
+       			<p class="w3-dark-grey">
+       				<span th:text="'[' + ${message.id} + ']'">ID</span>        				
+       				<span th:text = "${message.author}">Author</span> -
+       				<span th:text = "'(' + ${#temporals.format(message.creationDateTime, 'dd.MM.yyyy HH:mm')} + ')'">Creation date and time</span> :
+       			</p>
+       			<p th:text="${message.text}">Text</p> 	
+       			<hr/>
+       		</div>
+      	</div>
 	</div>
 
 	<!-- footer -->

@@ -43,7 +43,7 @@ public class MessageRepositoryTest {
 		Message message = new Message();
 		message.setAuthor("Initial author");
 		message.setCreationDateTime(LocalDateTime.now());
-		message.setMessage("Initial message");
+		message.setText("Initial message");
 		Message createdMessage = messageRepository.save(message);
 		
 		// verify that there is just one item 
@@ -57,7 +57,7 @@ public class MessageRepositoryTest {
 		// update retrieved message item
 		createdMessage.setAuthor("Updated author");
 		createdMessage.setCreationDateTime(LocalDateTime.now());
-		createdMessage.setMessage("Updated message");
+		createdMessage.setText("Updated message");
 		Message updatedMessage = messageRepository.save(createdMessage);
 		
 		// verify that there is just one item 

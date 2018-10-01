@@ -24,4 +24,8 @@ public class MessageService {
 	public List<Message> getAllMessages() {
 		return messageRepository.findAll();
 	}
+	
+	public Message saveMessage(Message message) {
+		return messageRepository.save(message);
+	}
 }
