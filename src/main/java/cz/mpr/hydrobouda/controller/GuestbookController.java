@@ -1,6 +1,6 @@
 package cz.mpr.hydrobouda.controller;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class GuestbookController {
 	@GetMapping("/guestbook")
 	public String guestbook(Model model) {
 		// read existing messages
-		List<Message> messages = messageService.getAllMessages();
+		List<Message> messages = messageService.findAllMessages();
 		model.addAttribute("messages", messages);
 		
 		// add a new message backing object for the form
@@ -40,11 +40,11 @@ public class GuestbookController {
 	@PostMapping("/guestbook")
 	public String saveGuestbookMessage(Message message, Model model) {
 		// save new message
-		message.setCreationDateTime(LocalDateTime.now());
-		messageService.saveMessage(message);
+		message.setCreationDate(new Date());
+		messageService.save(message);
 		
 		// read existing messages
-		List<Message> messages = messageService.getAllMessages();
+		List<Message> messages = messageService.findAllMessages();
 		model.addAttribute("messages", messages);
 		
 		return "guestbook";

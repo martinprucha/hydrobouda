@@ -21,11 +21,11 @@ public class MessageService {
 	@Autowired
 	private MessageRepository messageRepository;
 	
-	public List<Message> getAllMessages() {
-		return messageRepository.findAll();
+	public List<Message> findAllMessages() {
+		return messageRepository.findAllByOrderByCreationDateDesc();
 	}
 	
-	public Message saveMessage(Message message) {
+	public Message save(Message message) {
 		return messageRepository.save(message);
 	}
 }

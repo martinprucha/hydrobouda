@@ -3,7 +3,7 @@ package cz.mpr.hydrobouda.repository;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,7 +42,7 @@ public class MessageRepositoryTest {
 		// create new message item
 		Message message = new Message();
 		message.setAuthor("Initial author");
-		message.setCreationDateTime(LocalDateTime.now());
+		message.setCreationDate(new Date());
 		message.setText("Initial message");
 		Message createdMessage = messageRepository.save(message);
 		
@@ -56,7 +56,7 @@ public class MessageRepositoryTest {
 		
 		// update retrieved message item
 		createdMessage.setAuthor("Updated author");
-		createdMessage.setCreationDateTime(LocalDateTime.now());
+		createdMessage.setCreationDate(new Date());
 		createdMessage.setText("Updated message");
 		Message updatedMessage = messageRepository.save(createdMessage);
 		

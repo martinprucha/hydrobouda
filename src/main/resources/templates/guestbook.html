@@ -52,7 +52,7 @@
        			<p class="w3-dark-grey">
        				<span th:text="'[' + ${message.id} + ']'">ID</span>        				
        				<span th:text = "${message.author}">Author</span> -
-       				<span th:text = "'(' + ${#temporals.format(message.creationDateTime, 'dd.MM.yyyy HH:mm')} + ')'">Creation date and time</span> :
+       				<span th:text = "'(' + ${#dates.format(message.creationDate, 'dd.MM.yyyy HH:mm')} + ')'">Creation date</span> :
        			</p>
        			<p th:text="${message.text}">Text</p> 	
        			<hr/>

@@ -1,6 +1,6 @@
 package cz.mpr.hydrobouda.model;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +19,7 @@ public class Message {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private LocalDateTime creationDateTime;
+	private Date creationDate;
 	private String author;
 	private String text;
 
@@ -30,13 +30,13 @@ public class Message {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public LocalDateTime getCreationDateTime() {
-		return creationDateTime;
+	
+	public Date getCreationDate() {
+		return creationDate;
 	}
 
-	public void setCreationDateTime(LocalDateTime creationDateTime) {
-		this.creationDateTime = creationDateTime;
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
 	}
 
 	public String getAuthor() {
@@ -60,7 +60,7 @@ public class Message {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((author == null) ? 0 : author.hashCode());
-		result = prime * result + ((creationDateTime == null) ? 0 : creationDateTime.hashCode());
+		result = prime * result + ((creationDate == null) ? 0 : creationDate.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((text == null) ? 0 : text.hashCode());
 		return result;
@@ -80,10 +80,10 @@ public class Message {
 				return false;
 		} else if (!author.equals(other.author))
 			return false;
-		if (creationDateTime == null) {
-			if (other.creationDateTime != null)
+		if (creationDate == null) {
+			if (other.creationDate != null)
 				return false;
-		} else if (!creationDateTime.equals(other.creationDateTime))
+		} else if (!creationDate.equals(other.creationDate))
 			return false;
 		if (id == null) {
 			if (other.id != null)
@@ -100,7 +100,7 @@ public class Message {
 
 	@Override
 	public String toString() {
-		return "Message [id=" + id + ", creationDateTime=" + creationDateTime + ", author=" + author + ", message="
+		return "Message [id=" + id + ", creationDate=" + creationDate + ", author=" + author + ", message="
 				+ text + "]";
 	}
 }
