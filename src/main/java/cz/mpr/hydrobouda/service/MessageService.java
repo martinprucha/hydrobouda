@@ -25,7 +25,7 @@ public class MessageService {
 		return messageRepository.findAllByOrderByCreationDateDesc();
 	}
 	
-	public Message save(Message message) {
+	public Message saveMessage(Message message) {
 		return messageRepository.save(message);
 	}
 }

@@ -17,5 +17,8 @@ import cz.mpr.hydrobouda.model.Message;
  */
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Long>{
+	/**
+	 * @return a collection of guestbook messages sorted by creation date in descending order
+	 */
 	public List<Message> findAllByOrderByCreationDateDesc();
 }
