@@ -14,7 +14,7 @@
 		<a th:href="@{/guestbook}" class="w3-bar-item w3-button"><i class="fas fa-users"></i> Guestbook</a>
 		
 		<!-- right aligned items -->
-		<a th:href="@{/h2-console}" class="w3-bar-item w3-button w3-right" target="_blank"><i class="fas fa-database"></i> H2 Console</a>
+		<a th:if="${@environment.getProperty('spring.profiles.active')} == 'dev'" th:href="@{/h2-console}" class="w3-bar-item w3-button w3-right" target="_blank"><i class="fas fa-database"></i> H2 Console</a>
 		<a th:href="@{/browser/index.html#/actuator}" class="w3-bar-item w3-button w3-right" target="_blank"><i class="fas fa-cogs"></i> Actuator</a>
 	</div>
 </body>

@@ -9,6 +9,6 @@
 <body>
 	<!--  footer fragment  -->
 	<div id="footer" th:fragment="footer" class="w3-container w3-blue-gray">
-		MPR - 2018
+		Active profile: <span th:text ="${@environment.getProperty('spring.profiles.active')}"> Active profile</span>
 	</div>
 </body>
