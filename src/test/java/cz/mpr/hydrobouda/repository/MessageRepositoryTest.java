@@ -35,6 +35,9 @@ public class MessageRepositoryTest {
 	 */
 	@Test
 	public void testCRUDOperations() {
+		// clear all the entries in the database
+		messageRepository.deleteAll();
+
 		// verify that there are no items
 		List<Message> messages = messageRepository.findAll();
 		assertEquals(0, messages.size());

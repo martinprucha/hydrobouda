@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "hydrobouda",
+                "projectName": "hydrobouda",
+                "workingDirectory": "c:\\Users\\mprucha\\eclipse-workspace\\hydrobouda",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "hydrobouda",
+                "projectName": "hydrobouda",
+                "workingDirectory": "c:\\Users\\mprucha\\eclipse-workspace\\hydrobouda",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}

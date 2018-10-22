@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - HydroboudaApplication",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "cz.mpr.hydrobouda.HydroboudaApplication",
+            "args": "",
+            "projectName": "hydrobouda"
+        }
+    ]
+}
