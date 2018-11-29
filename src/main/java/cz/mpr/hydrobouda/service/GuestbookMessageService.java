@@ -1,8 +1,8 @@
 package cz.mpr.hydrobouda.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import cz.mpr.hydrobouda.model.GuestbookMessage;
@@ -21,8 +21,8 @@ public class GuestbookMessageService {
 	@Autowired
 	private GuestbookMessageRepository guestbookMessageRepository;
 	
-	public List<GuestbookMessage> findAllGuestbookMessages() {
-		return guestbookMessageRepository.findAllByOrderByCreationDateDesc();
+	public Page<GuestbookMessage> findAllGuestbookMessagesPaginated(Pageable pageable) {
+		return guestbookMessageRepository.findAllByOrderByCreationDateDesc(pageable);
 	}
 	
 	public GuestbookMessage saveGuestbookMessage(GuestbookMessage message) {

@@ -1,6 +1,7 @@
 package cz.mpr.hydrobouda.repository;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
@@ -11,6 +12,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import cz.mpr.hydrobouda.model.GuestbookMessage;
@@ -79,4 +82,29 @@ public class GuestbookMessageRepositoryTest {
 		assertTrue(guestbookMessages.isEmpty());
 	}
 	
+	/**
+	 * Paged find test.
+	 */
+	@Test
+	public void testPagedFind() {
+		// clear all the guestbook messages in database
+		guestbookMessageRepository.deleteAll();
+		
+		// create new message items
+		for(int i = 0; i < 5; i++) {
+			// create new message item
+			GuestbookMessage message = new GuestbookMessage();
+			message.setAuthor("Author " + i);
+			message.setCreationDate(new Date());
+			message.setText("Message " + i);
+			guestbookMessageRepository.save(message);
+		}
+		
+		// verify paged find of guestbook messages
+		for(int i = 1; i <= 5; i++) {
+			Page<GuestbookMessage> page = guestbookMessageRepository.findAllByOrderByCreationDateDesc(PageRequest.of(1, 1));
+			assertNotNull(page.getContent());
+			assertTrue(page.getContent().size() == 1);
+		}
+	}
 }

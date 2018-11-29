@@ -1,7 +1,7 @@
 package cz.mpr.hydrobouda.repository;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -18,7 +18,8 @@ import cz.mpr.hydrobouda.model.GuestbookMessage;
 @Repository
 public interface GuestbookMessageRepository extends JpaRepository<GuestbookMessage, Long>{
 	/**
-	 * @return a collection of guestbook messages sorted by creation date in descending order
+	 * @param pageable
+	 * @return a page with guestbook messages  sorted by creation date in descending order
 	 */
-	public List<GuestbookMessage> findAllByOrderByCreationDateDesc();
+	public Page<GuestbookMessage> findAllByOrderByCreationDateDesc(Pageable pageable);
 }
