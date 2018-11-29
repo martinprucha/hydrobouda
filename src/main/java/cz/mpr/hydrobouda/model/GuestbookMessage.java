@@ -15,7 +15,7 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class Message {
+public class GuestbookMessage {
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -74,7 +74,7 @@ public class Message {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Message other = (Message) obj;
+		GuestbookMessage other = (GuestbookMessage) obj;
 		if (author == null) {
 			if (other.author != null)
 				return false;

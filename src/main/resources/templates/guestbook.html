@@ -19,14 +19,14 @@
 	<!-- content -->
 	<div class="w3-container">
 	
-		<!-- form for posting a new message -->
+		<!-- form for posting a new guestbook message -->
 		<div class="w3-container w3-row w3-margin-top">
 			<div class="w3-col l5">
 				<div class="w3-container w3-blue-gray ">
 					<h3>Your new message:</h3>
 				</div>
 				<div class="w3-container">
-					<form th:action="@{/guestbook}" th:object="${message}" th:method="post">
+					<form th:action="@{/guestbook}" th:object="${guestbookMessage}" th:method="post">
 						<p>
 							<label>Author:</label>
 							<input class="w3-input w3-border" type="text" th:field="*{author}">
@@ -43,18 +43,18 @@
 			</div>
 		</div>
 		
-		<!-- list of existing messages -->
+		<!-- list of existing guestbook messages -->
 		<div class="w3-container">
 			<div class="w3-container w3-blue-gray">
 				<h3>Existing messages in guestbook:</h3>
 			</div>
-			<div class="w3-container" th:each="message : ${messages}">
+			<div class="w3-container" th:each="guestbookMessage : ${guestbookMessages}">
        			<p class="w3-dark-grey">
-       				<span th:text="'[' + ${message.id} + ']'">ID</span>        				
-       				<span th:text = "${message.author}">Author</span> -
-       				<span th:text = "'(' + ${#dates.format(message.creationDate, 'dd.MM.yyyy HH:mm')} + ')'">Creation date</span> :
+       				<span th:text="'[' + ${guestbookMessage.id} + ']'">ID</span>        				
+       				<span th:text = "${guestbookMessage.author}">Author</span> -
+       				<span th:text = "'(' + ${#dates.format(guestbookMessage.creationDate, 'dd.MM.yyyy HH:mm')} + ')'">Creation date</span> :
        			</p>
-       			<p th:text="${message.text}">Text</p> 	
+       			<p th:text="${guestbookMessage.text}">Text</p> 	
        			<hr/>
        		</div>
       	</div>

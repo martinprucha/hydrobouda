@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import cz.mpr.hydrobouda.model.Message;
-import cz.mpr.hydrobouda.service.MessageService;
+import cz.mpr.hydrobouda.model.GuestbookMessage;
+import cz.mpr.hydrobouda.service.GuestbookMessageService;
 
 /**
  * Controller for guestbook.
@@ -22,27 +22,27 @@ import cz.mpr.hydrobouda.service.MessageService;
 @Controller
 public class GuestbookController {
 	@Autowired
-	MessageService messageService;
+	GuestbookMessageService guestbookMessageService;
 	
 	@GetMapping("/guestbook")
 	public String guestbook(Model model) {
-		// read existing messages and add them to model
-		model.addAttribute("messages", messageService.findAllMessages());
+		// read existing guestbook messages and add them to model
+		model.addAttribute("guestbookMessages", guestbookMessageService.findAllGuestbookMessages());
 		
-		// add a new message backing object for the form
-		model.addAttribute("message", new Message());
+		// add a new  backing object for the form
+		model.addAttribute("guestbookMessage", new GuestbookMessage());
 		
 		return "guestbook";
 	}
 
 	@PostMapping("/guestbook")
-	public String saveGuestbookMessage(Message message, Model model) {
-		// save new message
-		message.setCreationDate(new Date());
-		messageService.saveMessage(message);
+	public String saveGuestbookMessage(GuestbookMessage guestbookMessage, Model model) {
+		// save new guestbook guestbook message
+		guestbookMessage.setCreationDate(new Date());
+		guestbookMessageService.saveGuestbookMessage(guestbookMessage);
 		
-		// read existing messages and add them to model
-		model.addAttribute("messages", messageService.findAllMessages());
+		// read existing guestbook messages and add them to model
+		model.addAttribute("guestbookMessages", guestbookMessageService.findAllGuestbookMessages());
 		
 		return "guestbook";
 	}

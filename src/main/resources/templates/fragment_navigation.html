@@ -15,6 +15,7 @@
 		
 		<!-- right aligned items -->
 		<a th:if="${@environment.getProperty('spring.profiles.active')} == 'dev'" th:href="@{/h2-console}" class="w3-bar-item w3-button w3-right" target="_blank"><i class="fas fa-database"></i> H2 Console</a>
-		<a th:href="@{/browser/index.html#/hydrobouda/actuator}" class="w3-bar-item w3-button w3-right" target="_blank"><i class="fas fa-cogs"></i> Actuator</a>
+		<a th:href="@{/api/browser/index.html#/hydrobouda/actuator}" class="w3-bar-item w3-button w3-right" target="_blank"><i class="fas fa-cogs"></i> Actuator API</a>
+		<a th:href="@{/api/browser/index.html#/hydrobouda/api}" class="w3-bar-item w3-button w3-right" target="_blank"><i class="fas fa-cogs"></i> Repositories API</a>
 	</div>
 </body>

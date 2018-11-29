@@ -13,11 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import cz.mpr.hydrobouda.model.Message;
-import cz.mpr.hydrobouda.repository.MessageRepository;
+import cz.mpr.hydrobouda.model.GuestbookMessage;
+import cz.mpr.hydrobouda.repository.GuestbookMessageRepository;
 
 /**
- * Test of MessageRepository methods.
+ * Test of GuestbookMessageRepository methods.
  * 
  * @author MPR
  * @version 1.0
@@ -26,9 +26,9 @@ import cz.mpr.hydrobouda.repository.MessageRepository;
  */
 @DataJpaTest
 @RunWith(SpringRunner.class)
-public class MessageRepositoryTest {
+public class GuestbookMessageRepositoryTest {
 	@Autowired
-	private MessageRepository messageRepository;
+	private GuestbookMessageRepository guestbookMessageRepository;
 
 	/**
 	 * CRUD operations test.
@@ -36,47 +36,47 @@ public class MessageRepositoryTest {
 	@Test
 	public void testCRUDOperations() {
 		// clear all the entries in the database
-		messageRepository.deleteAll();
+		guestbookMessageRepository.deleteAll();
 
 		// verify that there are no items
-		List<Message> messages = messageRepository.findAll();
-		assertEquals(0, messages.size());
+		List<GuestbookMessage> guestbookMessages = guestbookMessageRepository.findAll();
+		assertEquals(0, guestbookMessages.size());
 		
 		// create new message item
-		Message message = new Message();
+		GuestbookMessage message = new GuestbookMessage();
 		message.setAuthor("Initial author");
 		message.setCreationDate(new Date());
 		message.setText("Initial message");
-		Message createdMessage = messageRepository.save(message);
+		GuestbookMessage createdMessage = guestbookMessageRepository.save(message);
 		
 		// verify that there is just one item 
-		messages = messageRepository.findAll();
-		assertEquals(1, messages.size());
+		guestbookMessages = guestbookMessageRepository.findAll();
+		assertEquals(1, guestbookMessages.size());
 
 		// retrieve created message and verify its data
-		Optional<Message> retrievedCreatedMessage = messageRepository.findById(createdMessage.getId());
+		Optional<GuestbookMessage> retrievedCreatedMessage = guestbookMessageRepository.findById(createdMessage.getId());
 		assertEquals(createdMessage, retrievedCreatedMessage.get());
 		
 		// update retrieved message item
 		createdMessage.setAuthor("Updated author");
 		createdMessage.setCreationDate(new Date());
 		createdMessage.setText("Updated message");
-		Message updatedMessage = messageRepository.save(createdMessage);
+		GuestbookMessage updatedMessage = guestbookMessageRepository.save(createdMessage);
 		
 		// verify that there is just one item 
-		messages = messageRepository.findAll();
-		assertEquals(1, messages.size());
+		guestbookMessages = guestbookMessageRepository.findAll();
+		assertEquals(1, guestbookMessages.size());
 		
 		// retrieve updated message item
-		Optional<Message> retrievedUpdatedMessage = messageRepository.findById(updatedMessage.getId());
+		Optional<GuestbookMessage> retrievedUpdatedMessage = guestbookMessageRepository.findById(updatedMessage.getId());
 		assertEquals(updatedMessage, retrievedUpdatedMessage.get());
 		
 		// delete message item
-		messageRepository.deleteById(retrievedUpdatedMessage.get().getId());
+		guestbookMessageRepository.deleteById(retrievedUpdatedMessage.get().getId());
 		
 		// verify that there are no items
-		messages = messageRepository.findAll();
-		assertTrue(messages.isEmpty());
+		guestbookMessages = guestbookMessageRepository.findAll();
+		assertTrue(guestbookMessages.isEmpty());
 	}
 	
 }

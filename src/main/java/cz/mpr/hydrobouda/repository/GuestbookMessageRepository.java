@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import cz.mpr.hydrobouda.model.Message;
+import cz.mpr.hydrobouda.model.GuestbookMessage;
 
 /**
- * Spring Data Message repository interface.
+ * Spring Data GuestbookMessage repository interface.
  * 
  * @author MPR
  * @version 1.0
@@ -16,9 +16,9 @@ import cz.mpr.hydrobouda.model.Message;
  *
  */
 @Repository
-public interface MessageRepository extends JpaRepository<Message, Long>{
+public interface GuestbookMessageRepository extends JpaRepository<GuestbookMessage, Long>{
 	/**
 	 * @return a collection of guestbook messages sorted by creation date in descending order
 	 */
-	public List<Message> findAllByOrderByCreationDateDesc();
+	public List<GuestbookMessage> findAllByOrderByCreationDateDesc();
 }
