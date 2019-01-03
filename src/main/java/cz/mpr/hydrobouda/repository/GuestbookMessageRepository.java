@@ -19,7 +19,7 @@ import cz.mpr.hydrobouda.model.GuestbookMessage;
 public interface GuestbookMessageRepository extends JpaRepository<GuestbookMessage, Long>{
 	/**
 	 * @param pageable
-	 * @return a page with guestbook messages  sorted by creation date in descending order
+	 * @return a page with guestbook messages sorted by creation date in descending order
 	 */
 	public Page<GuestbookMessage> findAllByOrderByCreationDateDesc(Pageable pageable);
 }
