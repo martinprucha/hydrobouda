@@ -63,26 +63,28 @@
 		        </tr>
 		    </tbody>
 		</table>
-		
-		<!-- TODO - MPR - complete implementation and test pagination controls -->
+
+		<!-- paging controls of guestbook -->
 		<div th:if="${guestbookMessagePage.totalPages > 0}" class="pagination">
 		
-			<!-- TODO - MPR - add link to first page -->
-			<a th:disabled="${guestbookMessagePage.number == 0}" th:href="@{/guestbook(size=${guestbookMessagePage.size}, page=1)}" th:text="FIRST"></a>
+			<!-- link to first page -->
+			<a th:href="${guestbookMessagePage.number > 0} ? @{/guestbook(size=${guestbookMessagePage.size}, page=0)} : @{#}" title="First page"><i class="fas fa-angle-double-left"></i></a>
 			
-			<!-- TODO - MPR - add link to previous page -->
-			<a th:disabled="${guestbookMessagePage.number == 0}" th:href="@{/guestbook(size=${guestbookMessagePage.size}, page=${guestbookMessagePage.number - 1})}" th:text="PREVIOUS"></a>
-		
-			<!-- page numbers -->
+			<!-- link to previous page -->
+			<a th:href="${guestbookMessagePage.number > 0} ? @{/guestbook(size=${guestbookMessagePage.size}, page=${guestbookMessagePage.number - 1})} : @{#}" title="Previous page"><i class="fas fa-angle-left"></i></a>
+		    
+		    <!-- link to next page -->
+		    <a th:href="${guestbookMessagePage.number < (guestbookMessagePage.totalPages - 1)} ? @{/guestbook(size=${guestbookMessagePage.size}, page=${guestbookMessagePage.number + 1})} : @{#}" title="Next page"><i class="fas fa-angle-right"></i></a>
+		    
+		    <!-- link to last page -->
+		    <a th:href="${guestbookMessagePage.number < (guestbookMessagePage.totalPages - 1)} ? @{/guestbook(size=${guestbookMessagePage.size}, page=${guestbookMessagePage.totalPages -1})} : @{#}" title="Last page"><i class="fas fa-angle-double-right"></i></a>
+		    
+		    <br/>
+		    
+		    <!-- individual page numbers -->
 			<span th:each="pageNumber : ${pageNumbers}">
-		    	<a th:href="@{/guestbook(size=${guestbookMessagePage.size}, page=${pageNumber})}" th:text=${pageNumber} th:class="${pageNumber==guestbookMessagePage.number + 1} ? active"></a>
+		    	<a th:href="@{/guestbook(size=${guestbookMessagePage.size}, page=${pageNumber})}" th:text="${pageNumber + 1}" th:class="${pageNumber==guestbookMessagePage.number} ? active" th:title="|Go to page ${pageNumber + 1}|"></a>
 		    </span>
-		    
-		    <!-- TODO - MPR - add link to next page -->
-		    <a th:disabled="${guestbookMessagePage.number == (guestbookMessagePage.totalPages - 1)}" th:href="@{/guestbook(size=${guestbookMessagePage.size}, page=${guestbookMessagePage.number + 2})}" th:text="NEXT"></a>
-		    
-		    <!-- TODO - MPR - add link to last page -->
-		    <a th:disabled="${guestbookMessagePage.number == (guestbookMessagePage.totalPages - 1)}" th:href="@{/guestbook(size=${guestbookMessagePage.size}, page=${guestbookMessagePage.totalPages})}" th:text="LAST"></a>
 		</div>
 	</div>
 
