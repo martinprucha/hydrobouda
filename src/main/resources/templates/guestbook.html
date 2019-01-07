@@ -44,28 +44,14 @@
 		</div>
 		
 		<!-- list of existing guestbook messages -->
-		<!-- TODO - MPR - apply CSS to table with guestbook messages -->
-      	<table border="1">
-		    <thead>
-		        <tr>
-		            <th th:text="#{msg.id}" />
-		            <th th:text="#{msg.author}" />
-		            <th th:text="#{msg.creationDate}" />
-		            <th th:text="#{msg.text}" />
-		        </tr>
-		    </thead>
-		    <tbody>
-		        <tr th:each="guestbookMessage, iStat : ${guestbookMessagePage.content}">
-	            	<td th:text="'[' + ${guestbookMessage.id} + ']'">ID</td>        				
-       				<td th:text = "${guestbookMessage.author}">Author</td>
-       				<td th:text = "'(' + ${#dates.format(guestbookMessage.creationDate, 'dd.MM.yyyy HH:mm')} + ')'">Creation date</td>
-       				<td th:text="${guestbookMessage.text}">Text</td> 
-		        </tr>
-		    </tbody>
-		</table>
+		<blockquote th:each="guestbookMessage, iStat : ${guestbookMessagePage.content}" class="w3-container w3-leftbar w3-light-grey w3-padding">
+			<b><span th:text = "${guestbookMessage.author}"><strong>Author</strong></span></b><br/>
+			<span th:text="${guestbookMessage.text}">Text</span><br/>
+			<i><span th:text = "'(' + ${#dates.format(guestbookMessage.creationDate, 'dd.MM.yyyy HH:mm:ss')} + ')'">Creation date</span></i>
+		</blockquote>
 
 		<!-- paging controls of guestbook -->
-		<div th:if="${guestbookMessagePage.totalPages > 0}" class="pagination">
+		<div th:if="${guestbookMessagePage.totalPages > 0}" class="w3-container w3-margin">
 		
 			<!-- link to first page -->
 			<a th:href="${guestbookMessagePage.number > 0} ? @{/guestbook(size=${guestbookMessagePage.size}, page=0)} : @{#}" title="First page"><i class="fas fa-angle-double-left"></i></a>
@@ -91,5 +77,5 @@
 	<!-- footer -->
 	<div th:replace="fragment_footer::footer"></div>
 	
-	</body>
+</body>
 </html>
