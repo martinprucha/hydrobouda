@@ -29,8 +29,8 @@ public class GuestbookController {
 	@Autowired
 	GuestbookMessageService guestbookMessageService;
 	
-	private int pageNumber = 1; 
-	private int pageSize = 5;
+	private int pageNumber = 0; 
+	private int pageSize = 10;
 	
 	@GetMapping("/guestbook")
 	public String guestbook(Model model, @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
