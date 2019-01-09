@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Hydrobouda - guestbook pagination controls fragment</title>
+</head>
+
+<body>
+	<!-- paging controls of guestbook top -->
+	<div id="guestbook_pagination" th:fragment="guestbook_pagination" th:if="${guestbookMessagePage.totalPages > 0}" class="w3-container">
+		<!-- link to first page -->
+		<a th:href="${guestbookMessagePage.number > 0} ? @{/guestbook(size=${guestbookMessagePage.size}, page=0)} : @{#}" title="First page"><i class="fas fa-angle-double-left w3-padding"></i></a>
+		|
+		<!-- link to previous page -->
+		<a th:href="${guestbookMessagePage.number > 0} ? @{/guestbook(size=${guestbookMessagePage.size}, page=${guestbookMessagePage.number - 1})} : @{#}" title="Previous page"><i class="fas fa-angle-left w3-padding"></i></a>
+		|
+	    <!-- link to next page -->
+	    <a th:href="${guestbookMessagePage.number < (guestbookMessagePage.totalPages - 1)} ? @{/guestbook(size=${guestbookMessagePage.size}, page=${guestbookMessagePage.number + 1})} : @{#}" title="Next page"><i class="fas fa-angle-right w3-padding"></i></a>
+	    |
+	    <!-- link to last page -->
+	    <a th:href="${guestbookMessagePage.number < (guestbookMessagePage.totalPages - 1)} ? @{/guestbook(size=${guestbookMessagePage.size}, page=${guestbookMessagePage.totalPages -1})} : @{#}" title="Last page"><i class="fas fa-angle-double-right w3-padding"></i></a>
+	</div>
+</body>

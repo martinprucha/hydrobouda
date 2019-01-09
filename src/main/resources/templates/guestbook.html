@@ -6,77 +6,65 @@
 <head th:replace="fragment_head::head">
 </head>
 
-<!-- template body -->
-<body>
-	<!-- developement information -->
-	<div th:replace="fragment_devinfo::devinfo"></div>
-	
-	<!--  navigation bar -->
-	<div th:replace="fragment_navigation::navigation"></div>
-
-	<!-- header -->
-	<div class="w3-container w3-blue-gray">
-		<h1>Guestbook</h1>
-	</div>
-
-	<!-- content -->
-	<div class="w3-container">
-	
-		<!-- form for posting a new guestbook message -->
-		<div class="w3-container">
-			<h2>Your new message:</h2>
-			<form th:action="@{/guestbook}" th:object="${guestbookMessage}" th:method="post">
-				<p>
-					<label>Author:</label>
-					<input class="w3-input w3-border" type="text" th:field="*{author}">
-				</p>
-				<p>
-					<label>Message:</label>
-					<textarea class="w3-input w3-border" cols="50" rows="3" th:field="*{text}"></textarea>
-				</p>
-				<p>
-					<input type="submit" value="Post message!"/>
-				</p>
-			</form>
-		</div>
+	<!-- template body -->
+	<body>
+		<!-- developement information -->
+		<div th:replace="fragment_devinfo::devinfo"></div>
 		
-		<div class="w3-container">
-			<h2>Existing messages in guestbook:</h2>
-			
-			<!-- list of existing guestbook messages -->
-			<div th:each="guestbookMessage, iStat : ${guestbookMessagePage.content}" class="w3-container w3-leftbar w3-light-grey w3-margin w3-padding">
-				<b><span th:text = "${guestbookMessage.author}"><strong>Author</strong></span></b><br/>
-				<span th:text="${guestbookMessage.text}">Text</span><br/>
-				<i><span th:text = "'(' + ${#dates.format(guestbookMessage.creationDate, 'dd.MM.yyyy HH:mm:ss')} + ')'">Creation date</span></i>
-			</div>
+		<!--  navigation bar -->
+		<div th:replace="fragment_navigation::navigation"></div>
 	
-			<!-- paging controls of guestbook -->
-			<div th:if="${guestbookMessagePage.totalPages > 0}" class="w3-container w3-margin">
+		<!-- header -->
+		<div class="w3-container w3-blue-gray">
+			<h1>Guestbook</h1>
+		</div>
+	
+		<!-- content -->
+		<div class="w3-container w3-margin">
+		
+			<!-- form for posting a new guestbook message -->
+			<div class="w3-container">
+				<h2>Your new message:</h2>
+					<div class="w3-row">
+					<form th:action="@{/guestbook}" th:object="${guestbookMessage}" th:method="post" class="w3-container w3-col m6 l6">
+						<p>
+							<label>Author:</label>
+							<input class="w3-input w3-border" type="text" th:field="*{author}">
+						</p>
+						<p>
+							<label>Message:</label>
+							<textarea class="w3-input w3-border" cols="50" rows="2" th:field="*{text}"></textarea>
+						</p>
+						<p>
+							<input type="submit" value="Post new message!"/>
+						</p>
+					</form>
+				</div>
+			</div>
 			
-				<!-- link to first page -->
-				<a th:href="${guestbookMessagePage.number > 0} ? @{/guestbook(size=${guestbookMessagePage.size}, page=0)} : @{#}" title="First page"><i class="fas fa-angle-double-left"></i></a>
+			<div class="w3-container">
+				<h2>Existing messages in guestbook:</h2>
 				
-				<!-- link to previous page -->
-				<a th:href="${guestbookMessagePage.number > 0} ? @{/guestbook(size=${guestbookMessagePage.size}, page=${guestbookMessagePage.number - 1})} : @{#}" title="Previous page"><i class="fas fa-angle-left"></i></a>
-			    
-			    <!-- link to next page -->
-			    <a th:href="${guestbookMessagePage.number < (guestbookMessagePage.totalPages - 1)} ? @{/guestbook(size=${guestbookMessagePage.size}, page=${guestbookMessagePage.number + 1})} : @{#}" title="Next page"><i class="fas fa-angle-right"></i></a>
-			    
-			    <!-- link to last page -->
-			    <a th:href="${guestbookMessagePage.number < (guestbookMessagePage.totalPages - 1)} ? @{/guestbook(size=${guestbookMessagePage.size}, page=${guestbookMessagePage.totalPages -1})} : @{#}" title="Last page"><i class="fas fa-angle-double-right"></i></a>
-			    
-			    <br/>
-			    
-			    <!-- individual page numbers -->
-				<span th:each="pageNumber : ${pageNumbers}">
-			    	<a th:href="@{/guestbook(size=${guestbookMessagePage.size}, page=${pageNumber})}" th:text="${pageNumber + 1}" th:class="${pageNumber==guestbookMessagePage.number} ? active" th:title="|Go to page ${pageNumber + 1}|"></a>
-			    </span>
+				<!-- paging controls of guestbook - top -->
+				<div th:replace="fragment_guestbook_pagination::guestbook_pagination"></div>
+				
+				<!-- list of existing guestbook messages -->
+				<div th:each="guestbookMessage, iStat : ${guestbookMessagePage.content}" class="w3-container w3-leftbar w3-light-grey w3-margin w3-padding">
+					<b><span th:text = "${guestbookMessage.author}"><strong>Author</strong></span></b><br/>
+					<span th:text="${guestbookMessage.text}">Text</span><br/>
+					<i><span th:text = "'(' + ${#dates.format(guestbookMessage.creationDate, 'dd.MM.yyyy HH:mm:ss')} + ')'">Creation date</span></i>
+				</div>
+		
+				<!-- paging controls of guestbook - bottom -->
+				<div th:replace="fragment_guestbook_pagination::guestbook_pagination"></div>
+				
+				<div th:if="${guestbookMessagePage.totalPages > 0}" class="w3-container">
+					<!-- individual page numbers -->
+					<span th:each="pageNumber : ${pageNumbers}">
+				    	<a th:href="@{/guestbook(size=${guestbookMessagePage.size}, page=${pageNumber})}" th:text="|[${pageNumber + 1}]|" th:class="${pageNumber==guestbookMessagePage.number} ? active" th:title="|Go to page ${pageNumber + 1}|"></a>
+				    </span>
+				</div>
 			</div>
 		</div>
-	</div>
-
-	<!-- footer -->
-	<div th:replace="fragment_footer::footer"></div>
-	
-</body>
+	</body>
 </html>
