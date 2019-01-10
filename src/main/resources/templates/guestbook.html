@@ -29,11 +29,14 @@
 					<form th:action="@{/guestbook}" th:object="${guestbookMessage}" th:method="post" class="w3-container w3-col m6 l6">
 						<p>
 							<label>Author:</label>
-							<input class="w3-input w3-border" type="text" th:field="*{author}">
+							<span class="w3-text-red">*</span>
+							<input class="w3-input w3-border" type="text" th:field="*{author}" maxlength="255" th:required="required">
 						</p>
 						<p>
 							<label>Message:</label>
-							<textarea class="w3-input w3-border" cols="50" rows="2" th:field="*{text}"></textarea>
+							<span class="w3-text-red">*</span>
+							<textarea class="w3-input w3-border" cols="50" rows="2" th:field="*{text}" maxlength="2000" th:required="required"></textarea>
+							
 						</p>
 						<p>
 							<input type="submit" value="Post new message!"/>
@@ -50,9 +53,21 @@
 				
 				<!-- list of existing guestbook messages -->
 				<div th:each="guestbookMessage, iStat : ${guestbookMessagePage.content}" class="w3-container w3-leftbar w3-light-grey w3-margin w3-padding">
-					<b><span th:text = "${guestbookMessage.author}"><strong>Author</strong></span></b><br/>
-					<span th:text="${guestbookMessage.text}">Text</span><br/>
-					<i><span th:text = "'(' + ${#dates.format(guestbookMessage.creationDate, 'dd.MM.yyyy HH:mm:ss')} + ')'">Creation date</span></i>
+					<p>
+						<strong>
+							<span th:text="${guestbookMessage.author}">Author</span>
+						</strong>
+					</p>
+					
+					<p>
+						<span th:text="${guestbookMessage.text}">Text</span>
+					</p>
+					
+					<p>
+						<em>
+							<span th:text = "'(' + ${#dates.format(guestbookMessage.creationDate, 'dd.MM.yyyy HH:mm:ss')} + ')'">Creation date</span>
+						</em>
+					</p>
 				</div>
 		
 				<!-- paging controls of guestbook - bottom -->

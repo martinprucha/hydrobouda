@@ -2,6 +2,7 @@ package cz.mpr.hydrobouda.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -21,6 +22,8 @@ public class GuestbookMessage {
 	private Long id;
 	private Date creationDate;
 	private String author;
+	
+	@Column(length=2000)
 	private String text;
 
 	public Long getId() {
