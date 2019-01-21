@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Hydrobouda - header fragment</title>
+</head>
+
+<body>
+	<!--  header fragment  -->
+	<div id="header" th:fragment="header">
+		<!-- developement information -->
+		<div th:replace="fragment_devinfo::devinfo"></div>
+
+		<!-- navigation bar -->
+		<div th:replace="fragment_navigation::navigation"></div>
+	</div>
+</body>

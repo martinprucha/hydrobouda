@@ -8,13 +8,10 @@
 
 	<!-- template body -->
 	<body>
-		<!-- developement information -->
-		<div th:replace="fragment_devinfo::devinfo"></div>
-		
-		<!--  navigation bar -->
-		<div th:replace="fragment_navigation::navigation"></div>
-	
 		<!-- header -->
+		<div th:replace="fragment_header::header"></div>
+	
+		<!-- headline -->
 		<div class="w3-container w3-blue-gray">
 			<h1>Guestbook</h1>
 		</div>
@@ -25,7 +22,7 @@
 			<!-- form for posting a new guestbook message -->
 			<div class="w3-container">
 				<h2>Your new message:</h2>
-					<div class="w3-row">
+				<div class="w3-row">
 					<form th:action="@{/guestbook}" th:object="${guestbookMessage}" th:method="post" class="w3-container w3-col m6 l6">
 						<p>
 							<label>Author:</label>

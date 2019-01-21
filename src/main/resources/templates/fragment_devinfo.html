@@ -7,8 +7,8 @@
 </head>
 
 <body>
-	<!--  fragment with developement info  -->
-	<div id="dev_info" th:fragment="devinfo" class="w3-container w3-black w3-border-bottom">
+	<!--  fragment with developement info - displayed only when dev profile is active -->
+	<div id="dev_info" th:fragment="devinfo" th:if="${@environment.getProperty('spring.profiles.active')} == 'dev'" class="w3-container w3-black w3-border-bottom">
 		Active profile: <span th:text ="${@environment.getProperty('spring.profiles.active')}"> Active profile</span>
 	</div>
 </body>
