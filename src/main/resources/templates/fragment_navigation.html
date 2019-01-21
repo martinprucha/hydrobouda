@@ -13,9 +13,14 @@
 		<a th:href="@{/home}" class="w3-bar-item w3-button"><i class="fa fa-home"></i> Home</a> 
 		<a th:href="@{/guestbook}" class="w3-bar-item w3-button"><i class="fas fa-users"></i> Guestbook</a>
 		
-		<!-- right aligned items -->
-		<a th:if="${@environment.getProperty('spring.profiles.active')} == 'dev'" th:href="@{/h2-console}" class="w3-bar-item w3-button w3-right" target="_blank"><i class="fas fa-database"></i> H2 Console</a>
-		<a th:href="@{/api/browser/index.html#/hydrobouda/actuator}" class="w3-bar-item w3-button w3-right" target="_blank"><i class="fas fa-cogs"></i> Actuator API</a>
-		<a th:href="@{/api/browser/index.html#/hydrobouda/api}" class="w3-bar-item w3-button w3-right" target="_blank"><i class="fas fa-cogs"></i> Repositories API</a>
+		<!-- tools dropdown menu -->
+		<div class="w3-dropdown-hover">
+    		<button class="w3-button w3-black"> <i class="fas fa-wrench"></i> Tools <i class="fa fa-caret-down"></i></button>
+    		<div class="w3-dropdown-content w3-bar-block w3-black">
+      			<a th:if="${@environment.getProperty('spring.profiles.active')} == 'dev'" th:href="@{/h2-console}" class="w3-bar-item w3-button" target="_blank"><i class="fas fa-database"></i> H2 Console</a>
+      			<a th:href="@{/api/browser/index.html#/hydrobouda/api}" class="w3-bar-item w3-button" target="_blank"><i class="fas fa-cogs"></i> Repositories REST API</a>
+				<a th:href="@{/api/browser/index.html#/hydrobouda/actuator}" class="w3-bar-item w3-button" target="_blank"><i class="fas fa-cogs"></i> Actuator REST API</a>
+    		</div>
+  		</div>
 	</div>
 </body>

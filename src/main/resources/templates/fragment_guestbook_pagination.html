@@ -19,6 +19,6 @@
 	    <a th:href="${guestbookMessagePage.number < (guestbookMessagePage.totalPages - 1)} ? @{/guestbook(size=${guestbookMessagePage.size}, page=${guestbookMessagePage.number + 1})} : @{#}" title="Next page"><i class="fas fa-angle-right w3-padding"></i></a>
 	    |
 	    <!-- link to last page -->
-	    <a th:href="${guestbookMessagePage.number < (guestbookMessagePage.totalPages - 1)} ? @{/guestbook(size=${guestbookMessagePage.size}, page=${guestbookMessagePage.totalPages -1})} : @{#}" title="Last page"><i class="fas fa-angle-double-right w3-padding"></i></a>
+	    <a th:href="${guestbookMessagePage.number < (guestbookMessagePage.totalPages - 1)} ? @{/guestbook(size=${guestbookMessagePage.size}, page=${guestbookMessagePage.totalPages - 1})} : @{#}" title="Last page"><i class="fas fa-angle-double-right w3-padding"></i></a>
 	</div>
 </body>

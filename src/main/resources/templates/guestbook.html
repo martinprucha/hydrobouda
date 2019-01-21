@@ -73,8 +73,8 @@
 				<!-- paging controls of guestbook - bottom -->
 				<div th:replace="fragment_guestbook_pagination::guestbook_pagination"></div>
 				
+				<!--  paging controls of guestbook - idividual page numbers -->
 				<div th:if="${guestbookMessagePage.totalPages > 0}" class="w3-container">
-					<!-- individual page numbers -->
 					<span th:each="pageNumber : ${pageNumbers}">
 				    	<a th:href="@{/guestbook(size=${guestbookMessagePage.size}, page=${pageNumber})}" th:text="|[${pageNumber + 1}]|" th:class="${pageNumber==guestbookMessagePage.number} ? active" th:title="|Go to page ${pageNumber + 1}|"></a>
 				    </span>
