@@ -17,11 +17,10 @@ import cz.mpr.hydrobouda.model.GuestbookMessage;
 import cz.mpr.hydrobouda.service.GuestbookMessageService;
 
 /**
- * Controller for guestbook.
+ * MVC controller for guestbook.
  * 
  * @author MPR
  * @version 1.0
- * @since 1.10.2018
  *
  */
 @Controller

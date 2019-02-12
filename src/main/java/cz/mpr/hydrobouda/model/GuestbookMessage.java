@@ -12,7 +12,6 @@ import javax.persistence.Id;
  * 
  * @author MPR
  * @version 1.0
- * @since 20.9.2018
  *
  */
 @Entity

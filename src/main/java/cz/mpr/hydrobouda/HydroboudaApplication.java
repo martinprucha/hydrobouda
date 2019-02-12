@@ -6,6 +6,13 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 import cz.mpr.hydrobouda.property.FileStorageProperties;
 
+/**
+ * Application main class.
+ * 
+ * @author MPR
+ * @version 1.0
+ *
+ */
 @SpringBootApplication
 @EnableConfigurationProperties({FileStorageProperties.class})
 public class HydroboudaApplication {

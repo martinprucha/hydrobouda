@@ -1,5 +1,12 @@
 package cz.mpr.hydrobouda.rest.response;
 
+/**
+ * Representation of file upload response.
+ * 
+ * @author MPR
+ * @version 1.0
+ *
+ */
 public class UploadFileResponse {
 	private String fileName;
 	private String fileDownloadUri;

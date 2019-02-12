@@ -20,6 +20,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * REST controller for file upload and download.
+ * 
+ * @author MPR
+ * @version 1.0
+ *
+ */
 @RestController
 public class FileController {
 

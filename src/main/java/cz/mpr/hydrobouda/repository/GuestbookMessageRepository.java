@@ -12,7 +12,6 @@ import cz.mpr.hydrobouda.model.GuestbookMessage;
  * 
  * @author MPR
  * @version 1.0
- * @since 20.9.2018
  *
  */
 @Repository

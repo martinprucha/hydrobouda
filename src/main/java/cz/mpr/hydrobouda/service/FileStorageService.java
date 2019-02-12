@@ -8,7 +8,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import cz.mpr.hydrobouda.exception.FileStorageException;
-import cz.mpr.hydrobouda.exception.MyFileNotFoundException;
+import cz.mpr.hydrobouda.exception.FileNotFoundException;
 import cz.mpr.hydrobouda.property.FileStorageProperties;
 
 import java.io.IOException;
@@ -18,6 +18,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+/**
+ * File storage service.
+ * 
+ * @author MPR
+ * @version 1.0
+ *
+ */
 @Service
 public class FileStorageService {
 
@@ -61,10 +68,10 @@ public class FileStorageService {
 			if (resource.exists()) {
 				return resource;
 			} else {
-				throw new MyFileNotFoundException("File not found " + fileName);
+				throw new FileNotFoundException("File not found " + fileName);
 			}
 		} catch (MalformedURLException ex) {
-			throw new MyFileNotFoundException("File not found " + fileName, ex);
+			throw new FileNotFoundException("File not found " + fileName, ex);
 		}
 	}
 }
