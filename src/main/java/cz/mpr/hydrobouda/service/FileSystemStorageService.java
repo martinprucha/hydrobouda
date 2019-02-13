@@ -41,7 +41,7 @@ public class FileSystemStorageService implements IStorageService {
 	}
 
 	@Override
-	public void store(MultipartFile file) {
+	public String store(MultipartFile file) {
 		
 		String filename = StringUtils.cleanPath(file.getOriginalFilename());
 		try {
@@ -58,6 +58,8 @@ public class FileSystemStorageService implements IStorageService {
 		} catch (IOException e) {
 			throw new StorageException("Failed to store file " + filename, e);
 		}
+		
+		return filename;
 	}
 
 	@Override

@@ -63,11 +63,10 @@ public class FileStorageMVCController {
 	}
 
 	@PostMapping("/filestorage")
-	public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+	public String handleUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
 
 		storageService.store(file);
-		redirectAttributes.addFlashAttribute("message",
-				"You successfully uploaded " + file.getOriginalFilename() + "!");
+		redirectAttributes.addAttribute("message", "You successfully uploaded " + file.getOriginalFilename() + "!");
 
 		return "redirect:/filestorage";
 	}
