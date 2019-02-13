@@ -1,11 +1,11 @@
-package cz.mpr.hydrobouda.repository;
+package cz.mpr.hydrobouda.jpa.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import cz.mpr.hydrobouda.model.GuestbookMessage;
+import cz.mpr.hydrobouda.jpa.model.GuestbookMessage;
 
 /**
  * Spring Data GuestbookMessage repository interface.

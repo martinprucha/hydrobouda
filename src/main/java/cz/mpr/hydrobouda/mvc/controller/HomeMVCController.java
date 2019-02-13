@@ -1,21 +1,21 @@
-package cz.mpr.hydrobouda.controller;
+package cz.mpr.hydrobouda.mvc.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- * MVC controller for template.
+ * MVC controller for home.
  * 
  * @author MPR
  * @version 1.0
  *
  */
 @Controller
-public class TemplateController {
+public class HomeMVCController {
 
-	@GetMapping(value = { "/template"})
+	@GetMapping(value = { "/", "/home" })
 	public String home() {
-		return "template";
+		return "home";
 	}
 
 }

@@ -5,9 +5,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import cz.mpr.hydrobouda.model.GuestbookMessage;
-import cz.mpr.hydrobouda.repository.GuestbookMessageRepository;
+import cz.mpr.hydrobouda.jpa.model.GuestbookMessage;
+import cz.mpr.hydrobouda.jpa.repository.GuestbookMessageRepository;
 
+// TODO - MPR - define interface for this service
 /**
  * Service containing guestbook message related operations.
  * @author MPR
@@ -16,19 +17,31 @@ import cz.mpr.hydrobouda.repository.GuestbookMessageRepository;
  *
  */
 @Service
-public class GuestbookMessageService {
+public class GuestbookMessageService implements IGuestbookMessageService {
 
 	@Autowired
 	private GuestbookMessageRepository guestbookMessageRepository;
 	
+	/* (non-Javadoc)
+	 * @see cz.mpr.hydrobouda.service.IGuestbookMessageService#findAllGuestbookMessagesPaginated(org.springframework.data.domain.Pageable)
+	 */
+	@Override
 	public Page<GuestbookMessage> findAllGuestbookMessagesPaginated(Pageable pageable) {
 		return guestbookMessageRepository.findAllByOrderByCreationDateDesc(pageable);
 	}
 	
+	/* (non-Javadoc)
+	 * @see cz.mpr.hydrobouda.service.IGuestbookMessageService#saveGuestbookMessage(cz.mpr.hydrobouda.jpa.model.GuestbookMessage)
+	 */
+	@Override
 	public GuestbookMessage saveGuestbookMessage(GuestbookMessage message) {
 		return guestbookMessageRepository.save(message);
 	}
 	
+	/* (non-Javadoc)
+	 * @see cz.mpr.hydrobouda.service.IGuestbookMessageService#deleteGuestbookMessage(java.lang.Long)
+	 */
+	@Override
 	public void deleteGuestbookMessage(Long id) {
 		guestbookMessageRepository.deleteById(id);
 	}

@@ -16,8 +16,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import cz.mpr.hydrobouda.model.GuestbookMessage;
-import cz.mpr.hydrobouda.repository.GuestbookMessageRepository;
+import cz.mpr.hydrobouda.jpa.model.GuestbookMessage;
+import cz.mpr.hydrobouda.jpa.repository.GuestbookMessageRepository;
 
 /**
  * Test of GuestbookMessageRepository methods.

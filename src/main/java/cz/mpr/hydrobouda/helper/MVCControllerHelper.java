@@ -14,7 +14,7 @@ import org.springframework.ui.Model;
  * @version 1.0
  *
  */
-public class ControllerHelper {
+public class MVCControllerHelper {
 	
 	/**
 	 * This method adds a sequence of integers <0, numberOfPages - 1> representing individual pages 

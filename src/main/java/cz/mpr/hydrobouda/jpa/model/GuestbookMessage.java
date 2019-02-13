@@ -1,4 +1,4 @@
-package cz.mpr.hydrobouda.model;
+package cz.mpr.hydrobouda.jpa.model;
 
 import java.util.Date;
 

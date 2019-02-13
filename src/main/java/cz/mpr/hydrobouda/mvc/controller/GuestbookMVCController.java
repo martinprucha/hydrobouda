@@ -1,4 +1,4 @@
-package cz.mpr.hydrobouda.controller;
+package cz.mpr.hydrobouda.mvc.controller;
 
 import java.util.Date;
 import java.util.Optional;
@@ -12,21 +12,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import cz.mpr.hydrobouda.helper.ControllerHelper;
-import cz.mpr.hydrobouda.model.GuestbookMessage;
-import cz.mpr.hydrobouda.service.GuestbookMessageService;
+import cz.mpr.hydrobouda.helper.MVCControllerHelper;
+import cz.mpr.hydrobouda.jpa.model.GuestbookMessage;
+import cz.mpr.hydrobouda.service.IGuestbookMessageService;
 
 /**
- * MVC controller for guestbook.
+ * MVC controller for guestbook feature.
  * 
  * @author MPR
  * @version 1.0
  *
  */
 @Controller
-public class GuestbookController {
+public class GuestbookMVCController {
 	@Autowired
-	GuestbookMessageService guestbookMessageService;
+	IGuestbookMessageService guestbookMessageService;
 	
 	private int pageNumber = 0; 
 	private int pageSize = 10;
@@ -57,6 +57,6 @@ public class GuestbookController {
 		model.addAttribute("guestbookMessagePage", guestbookMessagePage);
         model.addAttribute("guestbookMessage", new GuestbookMessage());
         
-        ControllerHelper.addPageNumbersToModel(guestbookMessagePage, "pageNumbers", model);
+        MVCControllerHelper.addPageNumbersToModel(guestbookMessagePage, "pageNumbers", model);
 	}
 }

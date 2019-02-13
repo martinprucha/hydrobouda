@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
-import cz.mpr.hydrobouda.property.FileStorageProperties;
+import cz.mpr.hydrobouda.configuration.StorageProperties;
 
 /**
  * Application main class.
@@ -14,7 +14,7 @@ import cz.mpr.hydrobouda.property.FileStorageProperties;
  *
  */
 @SpringBootApplication
-@EnableConfigurationProperties({FileStorageProperties.class})
+@EnableConfigurationProperties({StorageProperties.class})
 public class HydroboudaApplication {
 
 	public static void main(String[] args) {

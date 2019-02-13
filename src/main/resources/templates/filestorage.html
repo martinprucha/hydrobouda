@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- template head -->
+<head th:replace="fragment_head::head">
+</head>
+
+<!-- template body -->
+<body>
+	<!-- header -->
+	<div th:replace="fragment_header::header"></div>
+
+	<!-- headline -->
+	<div class="w3-container w3-blue-gray">
+		<h1>File storage</h1>
+	</div>
+
+	<!-- content -->
+	<div class="w3-container w3-margin">
+		<div th:if="${message}" class="w3-panel w3-teal w3-display-container">
+			<span onclick="this.parentElement.style.display='none'" class="w3-button w3-display-topright">&times;</span>
+  			<h3 th:text="${message}"></h3>
+		</div> 
+		
+		<!-- input form -->
+		<div class="w3-container">
+			<h2>Upload new file:</h2>
+			<div class="w3-row">
+				<form th:method="POST" enctype="multipart/form-data" th:action="@{/filestorage}" class="w3-container w3-col m6 l6">
+					<p>
+						<label>Input file:</label>
+						<span class="w3-text-red">*</span>
+						<input class="w3-input" type="file" name="file" th:required="required">
+					</p>
+					<p>
+						<input type="submit" value="Upload file!"/>
+					</p>
+				</form>
+			</div>
+		</div>
+
+		<!-- list of existing uploaded files -->
+		<div class="w3-container">
+			<h2>Uploaded files:</h2>
+			<div>
+				<ul>
+					<li th:each="file : ${files}">
+						<a th:href="${file}" th:text="${file}"></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
