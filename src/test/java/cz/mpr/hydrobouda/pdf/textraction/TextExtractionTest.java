@@ -21,6 +21,7 @@ import java.io.IOException;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.encryption.AccessPermission;
 import org.apache.pdfbox.text.PDFTextStripper;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -40,6 +41,7 @@ public class TextExtractionTest
      *
      * @throws IOException If there is an error parsing or extracting the document.
      */
+	@Ignore
 	@Test
     public void testExtract1() throws IOException
     {
