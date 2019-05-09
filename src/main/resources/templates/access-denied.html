@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- template head -->
+<head th:replace="fragment_head::head">
+</head>
+
+<!-- template body -->
+<body>
+	<!-- header -->
+	<div th:replace="fragment_header::header"></div>
+
+	<!-- headline -->
+	<div class="w3-container w3-blue-gray">
+		<h1>Access denied!</h1>
+	</div>
+
+	<!-- content -->
+	<div class="w3-container">
+		<h2>Get out!</h2>
+		<p>
+			<!-- <img th:src="@{/img/trollface.jpg}"/> -->
+		</p>
+	</div>
+	
+	</body>
+</html>

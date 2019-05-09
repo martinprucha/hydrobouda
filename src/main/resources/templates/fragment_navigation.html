@@ -23,5 +23,10 @@
 				<a th:href="@{/api/browser/index.html#/hydrobouda/actuator}" class="w3-bar-item w3-button" target="_blank"><i class="fas fa-cogs"></i> Actuator REST API</a>
     		</div>
   		</div>
+  		
+  		<a th:href="@{/logout}" class="w3-bar-item w3-button"><i class="fa fa-sign-out-alt"></i> Logout</a>
+  		<form th:action="@{/logout}" method="post">
+        	<button type="submit">Sign Out</button>        
+ 		</form> 
 	</div>
 </body>
