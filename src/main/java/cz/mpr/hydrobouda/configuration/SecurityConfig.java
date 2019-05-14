@@ -5,22 +5,20 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.User.UserBuilder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
-	@SuppressWarnings("deprecation")
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		// add our users for in memory authentication
-		UserBuilder users = User.withDefaultPasswordEncoder();
-
+		PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+		
 		auth.inMemoryAuthentication()
-			.withUser(users.username("john").password("password").roles("USER"))
-			.withUser(users.username("susan").password("password").roles("USER", "ADMIN"));
+        	.withUser("john").password(encoder.encode("password")).roles("USER").and()
+        	.withUser("susan").password(encoder.encode("password")).roles("USER", "ADMIN");
 	}
 
 	@Override
