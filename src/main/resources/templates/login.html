@@ -13,23 +13,68 @@
 	<!-- <div th:replace="fragment_header::header"></div> -->
 	
 	<!-- headline -->
-	<div class="w3-container w3-blue-gray">
+	<!-- <div class="w3-container w3-blue-gray">
 		<h1>Login page</h1>
-	</div>
+	</div>  -->
 	
 	<!-- content -->
 	<div class="w3-container">
 	
 		<p th:if="${loginError}" class="error">Wrong user or password</p>
 		
+		<!--
 		<form th:action="@{/login}" method="post">
-			<label for="username">Username</label>:
-			<input type="text" id="username" name="username" autofocus="autofocus" /> <br />
-			<label for="password">Password</label>:
-			<input type="password" id="password" name="password" /> <br />
-			<input type="submit" value="Login" />
+			<div class="form-group">
+				<label for="username">Username</label>:
+				<input type="text" id="username" name="username" autofocus="autofocus" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>:
+				<input type="password" id="password" name="password" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-sm-6 col-sm-offset-3">
+						<input type="submit" value="Login" class="form-control btn btn-info"/>
+					</div>
+				</div>
+			</div>
 		</form>
-	
+		-->
+	<div class="row" style="margin-top:20px">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+        <form th:action="@{/login}" method="post">
+            <fieldset>
+                <h1>Login page</h1>
+                <div th:if="${param.error}">
+                    <div class="alert alert-danger">
+                        Invalid username and password.
+                    </div>
+                </div>
+                <div th:if="${param.logout}">
+                    <div class="alert alert-info">
+                        You have been logged out.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="username" id="username" class="form-control input-lg"
+                           placeholder="UserName"/>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" id="password" class="form-control input-lg"
+                           placeholder="Password"/>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Login"/>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+	    </div>
 	</div>
 </body>
 

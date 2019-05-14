@@ -24,9 +24,9 @@
     		</div>
   		</div>
   		
-  		<a th:href="@{/logout}" class="w3-bar-item w3-button"><i class="fa fa-sign-out-alt"></i> Logout</a>
-  		<form th:action="@{/logout}" method="post">
-        	<button type="submit">Sign Out</button>        
- 		</form> 
+  		<a href="javascript: document.logoutForm.submit()" class="w3-bar-item w3-button"><i class="fa fa-sign-out-alt"></i> Logout </a>
+		<form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+      		<input type="submit" value="Logout"/>
+		</form> 
 	</div>
 </body>
