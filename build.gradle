@@ -4,8 +4,10 @@
 
 plugins {
     id 'java'
+    id 'war'
     id 'maven-publish'
     id 'org.springframework.boot' version '2.1.7.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 }
 
 group = 'cz.mpr'
@@ -21,21 +23,34 @@ repositories {
 }
 
 dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-web:2.1.7.RELEASE'
-    compile 'org.springframework.boot:spring-boot-starter-thymeleaf:2.1.7.RELEASE'
-    compile 'org.springframework.boot:spring-boot-starter-data-jpa:2.1.7.RELEASE'
-    compile 'org.springframework.boot:spring-boot-starter-data-rest:2.1.7.RELEASE'
-    compile 'org.springframework.boot:spring-boot-starter-actuator:2.1.7.RELEASE'
-    compile 'org.springframework.boot:spring-boot-starter:2.1.7.RELEASE'
-    compile 'org.springframework.boot:spring-boot-starter-log4j2:2.1.7.RELEASE'
-    compile 'org.springframework.boot:spring-boot-devtools:2.1.7.RELEASE'
-    compile 'org.springframework.data:spring-data-rest-hal-browser:3.1.5.RELEASE'
-    compile 'com.h2database:h2:1.4.197'
-    compile 'org.springframework.boot:spring-boot-configuration-processor:2.1.7.RELEASE'
-    compile 'org.apache.pdfbox:pdfbox:2.0.16'
-    testCompile 'org.springframework.boot:spring-boot-starter-test:2.1.7.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-dependencies:2.1.7.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+    implementation 'org.springframework.boot:spring-boot-devtools'
+    implementation 'org.springframework.data:spring-data-rest-hal-browser:3.1.5.RELEASE'
+    implementation 'com.h2database:h2:1.4.197'
+    implementation 'org.springframework.boot:spring-boot-configuration-processor'
+    implementation 'org.apache.pdfbox:pdfbox:2.0.16'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    components {
+        withModule('org.springframework:spring-beans') {
+            allVariants {
+                withDependencyConstraints {
+                    // Need to patch constraints because snakeyaml is an optional dependency
+                    it.findAll { it.name == 'snakeyaml' }.each { it.version { strictly '1.19' } }
+                }
+            }
+        }
+    }
 }
 
 configurations {
-    compile.exclude module: 'spring-boot-starter-logging'
+    implementation.exclude module: 'spring-boot-starter-logging'
 }
