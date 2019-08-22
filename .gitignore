@@ -1,3 +1,4 @@
+/bin/
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 
@@ -29,3 +30,6 @@
 /logs/
 *.log
 /uploads/
+
+### Gradle ###
+.gradle/
