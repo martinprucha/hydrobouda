@@ -4,17 +4,18 @@
 
 plugins {
     id 'java'
-    id 'war'
     id 'maven-publish'
     id 'org.springframework.boot' version '2.1.7.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 }
 
+// definition project coordinates
 group = 'cz.mpr'
 version = '0.0.1-SNAPSHOT'
 description = 'hydrobouda'
 sourceCompatibility = '12'
 
+// definition of artifact repositories
 repositories {
     mavenLocal()
     maven {
@@ -22,8 +23,11 @@ repositories {
     }
 }
 
+// definition of dependencies
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-dependencies:2.1.7.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-dependencies:2.1.7.RELEASE' // Spring Boot
+    
+    // spring boot starters
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -31,14 +35,16 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-log4j2'
-    implementation 'org.springframework.boot:spring-boot-devtools'
-    implementation 'org.springframework.data:spring-data-rest-hal-browser:3.1.5.RELEASE'
-    implementation 'com.h2database:h2:1.4.197'
-    implementation 'org.springframework.boot:spring-boot-configuration-processor'
-    implementation 'org.apache.pdfbox:pdfbox:2.0.16'
+
+    implementation 'org.springframework.boot:spring-boot-devtools' // devtools
+    implementation 'org.springframework.boot:spring-boot-configuration-processor' // configuration processor
+    implementation 'org.springframework.data:spring-data-rest-hal-browser:3.1.5.RELEASE' // HAL browser
+    implementation 'com.h2database:h2:1.4.197' // H2 databse
+    implementation 'org.apache.pdfbox:pdfbox:2.0.16' // pdfbox
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+    // this block is needed to comply with Spring Boot BOM
     components {
         withModule('org.springframework:spring-beans') {
             allVariants {
@@ -52,9 +58,10 @@ dependencies {
 }
 
 configurations {
-    implementation.exclude module: 'spring-boot-starter-logging'
+    implementation.exclude module: 'spring-boot-starter-logging' // exclusion of Spring Boot default logging
 }
 
+// configuration of bootRun task
 bootRun {
   jvmArgs = ["-agentlib:jdwp=transport=dt_socket,server=y,address=8000,suspend=n"]
 }
