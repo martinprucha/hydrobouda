@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import cz.mpr.hydrobouda.jpa.model.GuestbookMessage;
 import cz.mpr.hydrobouda.jpa.repository.GuestbookMessageRepository;
 
-// TODO - MPR - define interface for this service
 /**
  * Service containing guestbook message related operations.
  * @author MPR

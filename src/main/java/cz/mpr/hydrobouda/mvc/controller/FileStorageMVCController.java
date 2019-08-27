@@ -22,7 +22,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import cz.mpr.hydrobouda.exception.StorageFileNotFoundException;
 import cz.mpr.hydrobouda.service.IStorageService;
 
-// TODO - MPR - #4 - finish implementation of this MVC controller and resolve problems
 /**
  * MVC controller for file storage feature.
  * 
